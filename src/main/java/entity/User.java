@@ -10,6 +10,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String imgPath;
 
     public User() {
     }
@@ -32,6 +33,14 @@ public class User {
         this.email = email;
     }
 
+    public User(Integer id, String username, String password, String email, String imgPath) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.imgPath = imgPath;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -39,6 +48,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", imgPath='" + imgPath + '\'' +
                 '}';
     }
 
@@ -72,5 +82,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }

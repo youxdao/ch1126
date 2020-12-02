@@ -71,13 +71,14 @@
 <%
     User user = (User) session.getAttribute("user");
     List<Msg> msgList = (List<Msg>) request.getAttribute("msg");
-
+    String imgPath=user.getImgPath();
+    imgPath=imgPath.replace("C:\\programming\\WorkSpace\\dfrz02\\ch1126_Msg\\web\\images\\","");
 %>
 <div class="wrapper">
     <div class="header">
         <div class="menu">
-            <span>当前用户：<%=user.getUsername()%></span><span></span>
-            <span><a href="#">发送消息</a><a href="logout.jsp">退出</a></span>
+            <span>当前用户：<img src="images/<%=imgPath%>" width="30px"/><%=user.getUsername()%></span><span></span>
+            <span><a href="#">发送消息</a><a href="logout.jsp">退出</a><a href="updateUser.jsp">修改</a></span>
         </div>
     </div>
     <div class="clear"></div>

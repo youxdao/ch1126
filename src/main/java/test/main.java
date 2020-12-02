@@ -5,6 +5,8 @@ import dao.UserDao;
 import entity.User;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -49,5 +51,11 @@ public class main {
 
         User user = userDao.queryUserByNameAndPassword(new User("user", "123", null));
         System.out.println(user.toString());
+    }
+
+    @Test
+    public void test(){
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyyMMddHHmmss");
+        System.out.println(simpleDateFormat.format(new Date()));
     }
 }
