@@ -14,4 +14,10 @@ public interface MsgService {
     List<Msg> queryMsgByToUid(Integer id);
 
     Msg queryMsgById(Integer id);
+
+    int insert(Msg msg);
+
+    int delete(Integer id);
+
+    int update(Msg msg);
 }

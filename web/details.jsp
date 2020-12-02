@@ -73,7 +73,7 @@
     UserDao userDao=new UserDaoImpl();
     User user= (User) session.getAttribute("user");
     Msg msgDetail= (Msg) request.getAttribute("msgDetails");
-    User fromUser =userDao.queryUserById(user.getId());
+    User fromUser =userDao.queryUserById(msgDetail.getFromUId());
 %>
 <div class="wrapper">
     <div class="header">
@@ -91,7 +91,7 @@
         </div>
 
         <div class="content-body">
-
+            <%=msgDetail.getmContent()%>
         </div>
 
     </div>

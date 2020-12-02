@@ -30,5 +30,10 @@ public class UserServiceImpl implements UserService {
         return userDao.update(user);
     }
 
+    @Override
+    public User queryUserByEmail(String email) {
+        return userDao.queryUserByEmail(email);
+    }
+
 
 }

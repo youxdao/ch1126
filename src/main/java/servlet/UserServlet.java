@@ -133,4 +133,6 @@ public class UserServlet extends BaseServlet {
         int result=userService.update(user);
         response.sendRedirect(request.getContextPath() +"/login.jsp");
     }
+
+
 }

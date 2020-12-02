@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="head.jsp"%>
 <html>
 <head>
     <title>Title</title>
@@ -78,7 +79,7 @@
     <div class="header">
         <div class="menu">
             <span>当前用户：<img src="images/<%=imgPath%>" width="30px"/><%=user.getUsername()%></span><span></span>
-            <span><a href="#">发送消息</a><a href="logout.jsp">退出</a><a href="updateUser.jsp">修改</a></span>
+            <span><a href="send.jsp">发送消息</a><a href="logout.jsp">退出</a><a href="updateUser.jsp">修改</a></span>
         </div>
     </div>
     <div class="clear"></div>
@@ -105,9 +106,9 @@
 
 
                     </span>
-                <span class="bordstyle"><%=msg.getMtitle()%></span><span><a href="msg.do?action=queryForOne&id=<%=msg.getId()%>"><%=msg.getmContent()%></a></span>
+                <span class="bordstyle"><%=msg.getMtitle()%></span><span><a href="msg.do?action=queryDetail&id=<%=msg.getId()%>"><%=msg.getmContent()%></a></span>
                 <span class="rfloat">
-                        <span><a href="#">删除</a></span>
+                        <span><a href="msg.do?action=delete&id=<%=msg.getId()%>">删除</a></span>
                         <span><a href="#">回信</a></span>
                         <span><%=msg.getCreateTime()%></span>
                     </span>

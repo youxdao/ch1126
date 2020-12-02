@@ -23,4 +23,19 @@ public class MsgServiceImpl implements MsgService {
     public Msg queryMsgById(Integer id) {
         return msgDao.queryMsgById(id);
     }
+
+    @Override
+    public int insert(Msg msg) {
+        return msgDao.insert(msg);
+    }
+
+    @Override
+    public int delete(Integer id) {
+        return msgDao.delete(id);
+    }
+
+    @Override
+    public int update(Msg msg) {
+        return msgDao.update(msg);
+    }
 }

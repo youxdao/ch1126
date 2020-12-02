@@ -42,7 +42,7 @@
     List<Msg> msgList = (List<Msg>) request.getAttribute("msg");
 %>
 <div class="wrapper">
-    <div class="title">欢迎注册</div>
+    <div class="title">修改个人信息</div>
     <form action="<%=basePath%>user.do"  method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="update">
         <div>
