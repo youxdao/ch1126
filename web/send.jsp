@@ -78,6 +78,27 @@
         }
 
     </style>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#ajaxbtn").click(function () {
+                var mTitle=$("#mTitle").val();
+                var email=$("#email").val();
+                // var mContent=$(".content-body").val();
+
+                $.ajax({
+                    url:"http://localhost:80/days1126/msg.do",
+                    data:{action:"send",mTitle:mTitle,email:email,mContent:editor.txt.html()},
+                    type:"GET",
+                    dataType:"text",
+                    success:function (data) {
+                        alert(data);
+                        // var jsonObj=JSON.parse(data);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <%
@@ -87,8 +108,7 @@
 //    User fromUser =userDao.queryUserById(msgDetail.getFromUId());
 %>
 <div class="wrapper">
-    <form action="<%=basePath%>msg.do">
-        <input type="hidden" name="action" value="send"/>
+    <form>
         <div class="header">
             <div class="menu">
                 <span>当前用户：<%=user.getUsername()%></span><span></span>
@@ -98,16 +118,22 @@
         <div class="clear"></div>
         <div class="content">
             <div class="content-top">
-                <span>标题：<input name="mTitle" type="text"/></span>
-                <span>收件人邮箱：<input name="email" type="text"/></span>
+                <span>标题：<input name="mTitle" type="text" id="mTitle"/></span>
+                <span>收件人邮箱：<input name="email" type="text" id="email"/></span>
             </div>
             &nbsp;&nbsp;内容:<br/>
             <div class="content-body">
-            <textarea name="mContent" rows="20  " cols="70">
-            </textarea>
             </div>
+            <script type="text/javascript" src="https://unpkg.com/wangeditor/dist/wangEditor.min.js"></script>
+            <script type="text/javascript">
+                const E=window.wangEditor;
+                const editor = new E('.content-body');
+                // 或者 const editor = new E( document.getElementById('div1') )
+                editor.config.uploadImgServer='http://localhost:80/days1126/imageUpload';
+                editor.create();
+            </script>
             <div>
-                <span><button type="submit">发送</button></span>
+                <span><button type="submit" id="ajaxbtn">发送</button></span>
             </div>
 
         </div>

@@ -15,4 +15,8 @@ public interface UserService {
     int update(User user);
 
     User queryUserByEmail(String email);
+
+    User queryUserByUsername(String username);
+
+
 }

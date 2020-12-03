@@ -10,6 +10,41 @@
 <html>
 <head>
     <title>Title</title>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+           $("#username").blur(function () {
+               var username=$("#username").val();
+               $.ajax({
+                   url:"http://localhost:80/days1126/user.do",
+                   data:{action:"queryUserByUsername",username:username},
+                   type:"GET",
+                   dataType:"text",//返回的数据类型
+                   success:function (data) {
+                       // alert(data);
+                       // var jsonObj=JSON.parse(data);
+                       $("#usernameMsg").html(data);
+                       }
+               });
+           });
+           $("#email").blur(function () {
+               var email=$("#email").val();
+              $.ajax({
+                  url:"http://localhost:80/days1126/user.do",
+                  data:{action:"queryUserByEmail",email:email},
+                  type:"GET",
+                  dataType:"text",//返回的数据类型
+                  success:function (data) {
+                      // alert(data);
+                      // var jsonObj=JSON.parse(data);
+                      $("#emailMsg").html(data);
+                  }
+              })
+           });
+        });
+    </script>
     <style type="text/css" rel="stylesheet">
         .wrapper{
             width: 500px;
@@ -30,6 +65,15 @@
             color: red;
         }
     </style>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -39,6 +83,7 @@
         <div>
             用户名<span class="red">*</span>
             <span><input type="text" name="username" id="username"></span>
+            <span id="usernameMsg"></span>
         </div>
         <div>
             密码<span class="red">*</span>
@@ -51,6 +96,7 @@
         <div>
             邮箱<span class="red">*</span>
             <span><input type="text" name="email" id="email"></span>
+            <span id="emailMsg"></span>
         </div>
         <div>
             头像<span class="red">*</span>

@@ -70,6 +70,9 @@ public class MsgServlet extends BaseServlet {
 
     //发送信息
     public void send(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("text/html;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+
         Msg msg = null;
         User toUser = null;
         User loginUser = (User) request.getSession().getAttribute("user");
@@ -94,15 +97,10 @@ public class MsgServlet extends BaseServlet {
             msg.setReadFlag(Const.MSG_ISREAD_UNREAD);
             msg.setCreateTime(simpleDateFormat.format(new Date()));
             int result = msgService.insert(msg);
-
-            if (result > 0) {
-                msgResult = "发送成功";
-            } else {
-                msgResult = "发送失败";
-            }
+            msgResult=(result > 0)?"发送成功":"发送失败";
         }
-        request.setAttribute("msgResult", msgResult);
-        request.getRequestDispatcher("/result.jsp").forward(request, response);
+        response.getWriter().write(msgResult);
+//        request.getRequestDispatcher("/result.jsp").forward(request, response);
 
     }
 }

@@ -134,5 +134,28 @@ public class UserServlet extends BaseServlet {
         response.sendRedirect(request.getContextPath() +"/login.jsp");
     }
 
+    //用户名查询用户
+    public void queryUserByUsername(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
 
+        String username=request.getParameter("username");
+        User user=userService.queryUserByUsername(username);
+        String message=(user==null)?"<span style=\"color: green\">√</span>":"<span style=\"color: red\">用户名已被注册</span>";
+        message=(username.equals(""))?"<span style=\"color: red\">用户名不能为空</span>":message;
+        response.getWriter().write(message);
+    }
+
+
+    //邮箱查询用户
+    public void queryUserByEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
+
+        String email=request.getParameter("email");
+        User user=userService.queryUserByEmail(email);
+        String message=(user==null)?"<span style=\"color: green\">√</span>":"<span style=\"color: red\">邮箱已被绑定</span>";
+        message=(email.equals(""))?"<span style=\"color: red\">邮箱不能为空</span>":message;
+        response.getWriter().write(message);
+    }
 }
